@@ -1,0 +1,43 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+
+<h2>Air Pollution Map</h2>
+
+<ul>
+    @foreach (var sensor in Model.Sensors)
+    {
+        <p>Sensor: @sensor.Id, @sensor.Latitude, @sensor.Longitude, PM2.5: @sensor.PM2_5</p>
+    }
+</ul>
+
+<div id="map" style="height: 500px; width: 100%;"></div>
+
+@section Scripts {
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+
+    <script>
+        var map = L.map('map').setView([20, 0], 2); // Center map globally
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+        }).addTo(map);
+
+        var sensors = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.Sensors));
+
+        sensors.forEach(sensor => {
+            if (sensor.latitude && sensor.longitude) {
+                L.marker([sensor.latitude, sensor.longitude])
+                    .addTo(map)
+                    .bindPopup(`Sensor ID: ${sensor.id}<br>PM2.5: ${sensor.pM2_5}`);
+            }
+        });
+    </script>
+}

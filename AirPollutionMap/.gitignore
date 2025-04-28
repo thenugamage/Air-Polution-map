@@ -1,0 +1,78 @@
+## Ignore build outputs
+bin/
+obj/
+out/
+
+## User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.swp
+*.swo
+
+## Visual Studio files
+.vs/
+.vscode/
+*.vcxproj.user
+*.dbmdl
+
+## ASP.NET Core
+wwwroot/lib/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Ignore environment variable config files
+*.env
+
+## Publish
+*.Publish.xml
+*.publishsettings
+
+## Azure stuff
+*.azurePubxml
+*.azurePubxml.user
+
+## Rider
+.idea/
+
+## Logs and temporary files
+*.log
+*.tmp
+*.bak
+*.nupkg
+*.snupkg
+
+## OS generated files
+.DS_Store
+Thumbs.db
+
+## NuGet
+packages/
+*.nupkg
+*.nuspec
+*.psmdcp
+
+## Entity Framework (optional)
+# Migrations/
+
+## Node (if using npm or yarn for frontend assets)
+node_modules/
+package-lock.json
+yarn.lock
+
+## npm debug log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+## Others
+*.tgz
+.env.local
+.env.development
+.env.production
+.env.test
+
+# ASP.NET scaffolding
+ScaffoldingReadMe.txt
